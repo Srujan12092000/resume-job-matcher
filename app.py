@@ -75,7 +75,7 @@ with tab2:
     # Sample evaluation metrics (replace with your actual optimized model results)
     metrics_data = {
         "Model": ["Baseline", "Optimized"],
-        "Accuracy": [0.69, 0.84],
+        "Accuracy": [0.65, 0.83],
         "Precision": [0.66, 0.82],
         "Recall": [0.70, 0.85],
         "F1 Score": [0.68, 0.83],
@@ -95,18 +95,9 @@ with tab2:
     plt.ylim(0, 1)
     st.pyplot(fig)
 
-    # Confusion Matrix for Optimized Model (Example)
-    st.subheader("📌 Confusion Matrix — Optimized Model")
-    y_true = [1, 0, 1, 1, 0, 0, 1, 0]  # Example labels (replace with actual test labels)
-    y_pred = [1, 0, 1, 1, 0, 1, 1, 0]  # Example predictions (replace with actual predictions)
-    cm = confusion_matrix(y_true, y_pred)
-    fig, ax = plt.subplots()
-    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=["Not Match", "Match"], yticklabels=["Not Match", "Match"])
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
-    st.pyplot(fig)
+    
 
-    # ROC Curve (Example)
+    # ROC Curve 
     st.subheader("📌 ROC Curve — Optimized Model")
     y_scores = np.array([0.2, 0.4, 0.8, 0.9, 0.3, 0.1, 0.85, 0.65])  # Example (replace with real scores)
     fpr, tpr, _ = roc_curve(y_true, y_scores)
@@ -118,4 +109,5 @@ with tab2:
     plt.ylabel("True Positive Rate")
     plt.title("ROC Curve")
     plt.legend(loc="lower right")
+
     st.pyplot(fig)
