@@ -13,9 +13,17 @@ from sklearn.metrics import (
     confusion_matrix, roc_curve, auc, precision_score,
     recall_score, f1_score, accuracy_score
 )
+from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
 # ------------------ Load Saved Model & Vectorizer ------------------
+# Load pre-trained files
+xgb_model = joblib.load("resume_match_model.pkl")          # Trained XGBoost model
+vectorizer = joblib.load("tfidf_vectorizer.pkl")           # TF-IDF vectorizer
+resume_embeddings = joblib.load("resume_embeddings.pkl")   # SBERT embeddings
+
+# Load SBERT model for job descriptions
+sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
 @st.cache_resource
 def load_model():
     model = joblib.load("resume_match_model.pkl")
@@ -96,5 +104,6 @@ with tab2:
     st.pyplot(fig)
 
     
+
 
 
