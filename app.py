@@ -97,17 +97,4 @@ with tab2:
 
     
 
-    # ROC Curve 
-    st.subheader("📌 ROC Curve — Optimized Model")
-    y_scores = np.array([0.2, 0.4, 0.8, 0.9, 0.3, 0.1, 0.85, 0.65])  # Example (replace with real scores)
-    fpr, tpr, _ = roc_curve(y_true, y_scores)
-    roc_auc = auc(fpr, tpr)
-    fig, ax = plt.subplots()
-    plt.plot(fpr, tpr, color="blue", lw=2, label=f"AUC = {roc_auc:.2f}")
-    plt.plot([0, 1], [0, 1], color="gray", linestyle="--")
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
-    plt.title("ROC Curve")
-    plt.legend(loc="lower right")
 
-    st.pyplot(fig)
